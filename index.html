@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#07100f" />
+    <meta name="description" content="Mythfall: Frontline — a mythic, atmospheric first-person arena shooter." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <title>MYTHFALL // FRONTLINE</title>
+  </head>
+  <body>
+    <div id="game-root">
+      <canvas id="game-canvas"></canvas>
+      <div class="vignette"></div>
+      <div class="scanlines"></div>
+      <header class="topline"><div class="brand-mark">M<span>✳</span>F</div><div class="topline-title">MYTHFALL <i>//</i> FRONTLINE</div><div class="online-status"><b></b> SIMULATION READY</div></header>
+      <main id="lobby" class="lobby">
+        <section class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> FRONTIER COMBAT INITIATIVE <span class="eyebrow-line"></span></div>
+          <h1>THE OLD<br/><em>WORLD</em> BURNS.</h1>
+          <p>Drop into the fracture. Take the relics. Make it out alive.</p>
+          <div class="hero-tags"><span>TACTICAL ARENA</span><span>✦</span><span>MYTHIC FRONTIER</span><span>✦</span><span>SEASON 01</span></div>
+        </section>
+        <section class="command-panel">
+          <div class="panel-head"><div><div class="section-label">01 / SELECT OPERATION</div><h2>Choose your battlefield</h2></div><div class="map-count">10 <span>LOCATIONS</span></div></div>
+          <div id="map-grid" class="map-grid"></div>
+          <div class="mode-loadout-row">
+            <div class="selector-block"><div class="section-label">02 / GAME MODE</div><select id="mode-select" aria-label="Game mode">
+              <option value="teams">Frontline · Team deathmatch</option><option value="battle">Last light · Battle royale</option><option value="zombies">The risen · Zombie survival</option><option value="assassin">Veil · Assassin survival</option>
+            </select></div>
+            <div class="selector-block loadout-select"><div class="section-label">03 / LOADOUT</div><select id="loadout-select" aria-label="Loadout"><option value="assault">Vanguard · Assault rifle</option><option value="scout">Wraith · Marksman</option><option value="support">Bastion · Heavy support</option></select></div>
+          </div>
+          <div class="panel-foot"><div class="squad-info"><div class="squad-icons"><span>01</span><span>02</span><span>03</span><span>04</span></div><div><b>LOCAL FIRETEAM</b><small>4 OPERATORS · BOT SQUAD</small></div></div><button id="deploy-button" class="deploy-button"><span>DEPLOY</span><b>→</b></button></div>
+          <div class="disclaimer">OFFLINE COMBAT SIMULATION <span>•</span> AI FIRETEAM <span>•</span> NO NETWORK MATCHMAKING</div>
+        </section>
+        <div class="lobby-bottom"><span>◈ &nbsp; A WORLD BETWEEN WORLDS</span><span>MYTHFALL FIELD MANUAL &nbsp; / &nbsp; 001</span></div>
+      </main>
+      <section id="hud" class="hud hidden" aria-live="polite">
+        <div class="hud-top-left"><span class="mode-chip">LIVE OPERATION</span><div id="objective">ELIMINATE HOSTILES</div><small id="map-label">LOCATION // CINDER DISTRICT</small></div>
+        <div class="match-status"><div class="status-side blue"><small>ORION</small><b id="blue-score">0</b></div><span class="score-divider">:</span><div class="status-side red"><small id="enemy-label">RAIDERS</small><b id="red-score">0</b></div><div class="timer" id="timer">08:00</div></div>
+        <button id="exit-button" class="exit-button">⏸ <span>MENU</span></button>
+        <div class="crosshair"><i></i><i></i><i></i><i></i><b></b></div>
+        <div id="hit-marker" class="hit-marker">×</div>
+        <div class="hud-bottom-left"><div class="health-row"><span>VITALS</span><b id="health-value">100</b></div><div class="health-track"><i id="health-bar"></i></div><div class="armor-row"><span>◈ ARMOR</span><b id="armor-value">50</b></div><div class="inventory"><span>FIELD PACK</span><div id="inventory-items">✦ 0 RELICS &nbsp; · &nbsp; 0 SUPPLIES</div></div></div>
+        <div class="hud-bottom-right"><div class="weapon-name"><small id="weapon-class">VANGUARD CLASS</small><b id="weapon-name">A-17 // STRIKER</b></div><div class="ammo"><b id="ammo-count">30</b><span>/ <i id="reserve-count">120</i></span></div><div class="weapon-meta"><span>▰ <i id="fire-mode">AUTO</i></span><span>R RELOAD</span></div></div>
+        <div id="feed" class="feed"></div><div id="toast" class="toast"></div>
+        <div class="controls-hint">WASD MOVE <span>·</span> MOUSE AIM <span>·</span> CLICK FIRE <span>·</span> E LOOT <span>·</span> SHIFT SPRINT</div>
+        <div id="touch-controls" class="touch-controls"><div class="touch-pad" id="move-pad"><span>MOVE</span><i>◉</i></div><button id="fire-touch">FIRE</button><button id="loot-touch">LOOT</button></div>
+        <div id="end-card" class="end-card hidden"><div class="section-label">OPERATION COMPLETE</div><h2 id="end-title">FIELD CLEARED</h2><p id="end-copy">The line held. The world still needs saving.</p><div id="end-stats" class="end-stats"></div><button id="return-button" class="deploy-button"><span>RETURN TO BASE</span><b>→</b></button></div>
+      </section>
+      <div id="pause-card" class="pause-card hidden"><div class="section-label">OPERATION PAUSED</div><h2>Regroup.</h2><p>Press ESC or resume to return to the field.</p><button id="resume-button" class="deploy-button"><span>RESUME OPERATION</span><b>→</b></button></div>
+      <div id="toast-live" class="sr-only" aria-live="polite"></div>
+    </div>
+    <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(error=>console.warn('Offline support unavailable:',error)));}</script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "id": "/",
+  "name": "Mythfall: Frontline",
+  "short_name": "Mythfall",
+  "description": "An offline, mythic frontier combat simulation.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#07100f",
+  "theme_color": "#07100f",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
