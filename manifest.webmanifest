@@ -1,0 +1,11 @@
+{
+  "name": "Quiet Zone — The Hollow Signal",
+  "short_name": "Quiet Zone",
+  "description": "A mythic first-person survival field simulation.",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#07100f",
+  "theme_color": "#07100f",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
